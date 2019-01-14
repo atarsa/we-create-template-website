@@ -380,30 +380,36 @@
 
 
 
-    // font-family: 'Montserrat', sans-serif;
-    // font-family: 'Roboto', sans-serif;
     // colors
     $begonia: #F7717D;
     $dark-pink: #D84797;
     $purpulish: #A63EF5;
     $dark-purple: #652596;
 
+    // breakpoints variables
+    $big: 1175px;
+    $medium: 970px;
 
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      height: 100vh;
+    *,
+    *:after,
+    *:before {
       box-sizing: border-box;
     }
 
-    header {
-      width: 100vw;
-      min-height: 280px;
-      height: 35vh;
+    body {
+      font-family: 'Montserrat', sans-serif;
+      height: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
 
+    }
+
+    header {
+      position: relative;
+      width: 100vw;
+      height: 25rem;
       background: #F7717D; //fallback
       background: linear-gradient(to right top, $begonia, $dark-pink, $purpulish);
-
 
       ul {
         text-transform: uppercase;
@@ -443,15 +449,29 @@
           padding: 0;
         }
       }
+
+      .wave-top-2 {
+        position: absolute;
+        width: 30rem;
+        right: 0;
+        bottom: 4.5rem;
+
+      }
+
+      .wave-top-1 {
+        position: absolute;
+        width: 50rem;
+        right: 0;
+        bottom: -2.5rem;
+      }
     }
 
     .section {
       max-width: 1024px;
       width: 80vw;
-      margin: 3em auto;
+      margin: 7rem auto;
       display: grid;
       grid-template-columns: 60% 1fr;
-      //background-color: aquamarine;
 
       & .section-img {
         max-width: 400px;
@@ -485,6 +505,7 @@
           color: #652596;
           font-size: 1em;
           line-height: 1.5em;
+          z-index: 2;
 
         }
       }
@@ -540,6 +561,7 @@
     }
 
     .ideas {
+      position: relative;
       width: 100vw;
       height: 40vh;
       background: url('img/fullbg.jpg');
@@ -554,19 +576,23 @@
         padding: 4rem;
 
       }
+
+      & img {
+        width: 50rem;
+        position: absolute;
+        bottom: -2.5rem;
+      }
     }
 
     footer {
-      box-sizing: border-box;
       width: 100vw;
-      height: 47vh;
+      height: 30rem;
       background: #A63EF5; //fallback
       background: linear-gradient(to right, rgb(250, 143, 152), $dark-pink 30%, #A63EF5);
 
 
       & .container {
-        box-sizing: border-box;
-        max-width: 1224px;
+        max-width: 1200px;
         height: 100%;
         display: grid;
         grid-template-columns: 60% 1fr;
@@ -577,6 +603,8 @@
         & .credits {
           padding: 0.5em 2em;
           display: grid;
+          grid-template-rows: 1fr 2rem;
+
 
           & h2 {
             color: #591b88;
@@ -639,6 +667,4 @@
           background: #fff;
         }
       }
-
-
     }
