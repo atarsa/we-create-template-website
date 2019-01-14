@@ -150,6 +150,7 @@ img {
 */
 button,
 input,
+footer .container .contact-form textarea,
 optgroup,
 select,
 textarea {
@@ -168,7 +169,8 @@ textarea {
 * 1. Show the overflow in Edge.
 */
 button,
-input {
+input,
+footer .container .contact-form textarea {
   /* 1 */
   overflow: visible;
 }
@@ -337,16 +339,23 @@ template {
   display: none;
 }
 
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
-  height: 100vh;
+  height: 100%;
+  overflow-x: hidden;
   box-sizing: border-box;
 }
 
 header {
+  position: relative;
   width: 100vw;
-  min-height: 280px;
-  height: 35vh;
+  height: 15rem;
   background: #F7717D;
   background: linear-gradient(to right top, #F7717D, #D84797, #A63EF5);
 }
@@ -358,7 +367,7 @@ header ul {
 }
 header ul li {
   display: inline-block;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: bold;
   color: #652596;
   margin-top: 1em;
@@ -366,7 +375,7 @@ header ul li {
 header ul li a {
   color: #652596;
   text-decoration: none;
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
   transition: all 0.3s ease-in-out;
 }
 header ul li a:hover {
@@ -378,29 +387,62 @@ header .title {
   margin-top: 3em;
 }
 header .title h1 {
-  font-size: 7em;
+  font-size: 2rem;
   margin: 0;
   padding: 0;
 }
+header .wave-top-2 {
+  position: absolute;
+  width: 10rem;
+  right: 0;
+  bottom: 1.5rem;
+}
+header .wave-top-1 {
+  position: absolute;
+  width: 15rem;
+  right: 0;
+  bottom: -1rem;
+}
+@media screen and (min-width: 970px) {
+  header {
+    height: 25rem;
+  }
+  header .title h1 {
+    font-size: 7rem;
+  }
+  header .wave-top-2 {
+    width: 25rem;
+    bottom: 4.5rem;
+  }
+  header .wave-top-1 {
+    width: 45rem;
+    bottom: -2.5rem;
+  }
+}
 
 .section {
-  max-width: 1024px;
   width: 80vw;
-  margin: 3em auto;
+  font-size: 1rem;
+  margin: 7rem auto;
   display: grid;
-  grid-template-columns: 60% 1fr;
+  grid-template-columns: 1fr;
 }
 .section .section-img {
-  max-width: 400px;
+  width: 100%;
   justify-self: end;
   align-self: center;
 }
 .section .section-img--2 {
   justify-self: start;
 }
-
-.section--inverted {
-  grid-template-columns: 1fr 60%;
+@media screen and (min-width: 970px) {
+  .section {
+    max-width: 1024px;
+    grid-template-columns: 60% 1fr;
+  }
+  .section.section--inverted {
+    grid-template-columns: 1fr 60%;
+  }
 }
 
 .section--1 {
@@ -494,8 +536,13 @@ header .title h1 {
 }
 
 .ideas {
+  position: relative;
   width: 100vw;
   height: 40vh;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   background: url("img/fullbg.jpg");
   background-position: bottom right;
   background-repeat: no-repeat;
@@ -504,35 +551,84 @@ header .title h1 {
 .ideas h2 {
   color: #fff;
   text-align: center;
-  font-size: 4.5rem;
-  padding: 4rem;
+  font-size: 2.5rem;
+  padding: 5rem;
+}
+.ideas img {
+  width: 50rem;
+  position: absolute;
+  bottom: -2.5rem;
 }
 
 footer {
-  box-sizing: border-box;
   width: 100vw;
-  height: 30vh;
   background: #A63EF5;
   background: linear-gradient(to right, #fa8f98, #D84797 30%, #A63EF5);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
-footer .credits {
-  box-sizing: border-box;
-  padding: 0.5em 2em;
-  height: 100%;
+footer .container {
   display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
 }
-footer .credits h2 {
-  color: #441b63;
+footer .container h2 {
+  color: #591b88;
   align-self: center;
   justify-self: center;
-  font-size: 2em;
+  font-size: 3em;
   font-weight: bold;
   line-height: 2em;
 }
-footer .credits small {
+footer .container .contact-form {
+  padding: 2em;
+  max-width: 35rem;
+}
+footer .container .contact-form div {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.6rem;
+  padding: 0.5em 0;
+  color: #591b88;
+}
+footer .container .contact-form div:nth-child(3) label {
+  margin-bottom: 0.8rem;
+}
+footer .container .contact-form input, footer .container .contact-form textarea {
+  padding: 0.3rem 0.5rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid #591b88;
+  color: #591b88;
+}
+footer .container .contact-form textarea {
+  border: 3px solid #591b88;
+  resize: none;
+  height: 7rem;
+}
+footer .container .contact-form button {
+  width: 40%;
+  padding: 0.5em 1em;
+  background: none;
+  border: 3px solid #fff;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+footer .container .contact-form button:hover {
+  color: #591b88;
+  background: #fff;
+}
+@media screen and (min-width: 970px) {
+  footer .container {
+    max-width: 1200px;
+    grid-template-columns: 60% 1fr;
+  }
+}
+footer .credits {
+  padding: 1em;
   align-self: end;
+}
+footer .credits a {
+  color: #591b88;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=main.css.map */

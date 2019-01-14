@@ -389,6 +389,7 @@
     // breakpoints variables
     $big: 1175px;
     $medium: 970px;
+    $small: 320px;
 
     *,
     *:after,
@@ -407,7 +408,7 @@
     header {
       position: relative;
       width: 100vw;
-      height: 25rem;
+      height: 15rem;
       background: #F7717D; //fallback
       background: linear-gradient(to right top, $begonia, $dark-pink, $purpulish);
 
@@ -420,7 +421,7 @@
 
         li {
           display: inline-block;
-          font-size: 1em;
+          font-size: 1rem;
           font-weight: bold;
           color: $dark-purple;
           margin-top: 1em;
@@ -428,7 +429,7 @@
           a {
             color: $dark-purple;
             text-decoration: none;
-            padding: 5px 10px;
+            padding: .5rem 1rem;
             transition: all .3s ease-in-out;
 
             &:hover {
@@ -444,7 +445,7 @@
         margin-top: 3em;
 
         h1 {
-          font-size: 7em;
+          font-size: 2rem;
           margin: 0;
           padding: 0;
         }
@@ -452,29 +453,47 @@
 
       .wave-top-2 {
         position: absolute;
-        width: 30rem;
+        width: 10rem;
         right: 0;
-        bottom: 4.5rem;
+        bottom: 1.5rem;
 
       }
 
       .wave-top-1 {
         position: absolute;
-        width: 50rem;
+        width: 15rem;
         right: 0;
-        bottom: -2.5rem;
+        bottom: -1rem;
+      }
+
+      @media screen and (min-width: $medium) {
+        height: 25rem;
+
+        .title h1 {
+          font-size: 7rem;
+        }
+
+        .wave-top-2 {
+          width: 25rem;
+          bottom: 4.5rem;
+        }
+
+        .wave-top-1 {
+          width: 45rem;
+          bottom: -2.5rem;
+        }
       }
     }
 
     .section {
-      max-width: 1024px;
       width: 80vw;
+      font-size: 1rem;
       margin: 7rem auto;
       display: grid;
-      grid-template-columns: 60% 1fr;
+      grid-template-columns: 1fr;
 
       & .section-img {
-        max-width: 400px;
+        width: 100%;
         justify-self: end;
         align-self: center;
       }
@@ -483,11 +502,16 @@
         justify-self: start;
       }
 
+      @media screen and (min-width: $medium) {
+        max-width: 1024px;
+        grid-template-columns: 60% 1fr;
+
+        &.section--inverted {
+          grid-template-columns: 1fr 60%;
+        }
+      }
     }
 
-    .section--inverted {
-      grid-template-columns: 1fr 60%;
-    }
 
     @for $i from 1 through 3 {
       .section--#{$i} {
@@ -505,7 +529,6 @@
           color: #652596;
           font-size: 1em;
           line-height: 1.5em;
-          z-index: 2;
 
         }
       }
@@ -521,7 +544,6 @@
       font-weight: bold;
       color: rgb(201, 146, 243);
       z-index: -1;
-
     }
 
     .section--2:before {
@@ -533,7 +555,6 @@
       font-weight: bold;
       color: rgb(255, 152, 160);
       z-index: -1;
-
     }
 
     .section--3:before {
@@ -545,7 +566,6 @@
       font-weight: bold;
       color: rgb(159, 104, 248);
       z-index: -1;
-
     }
 
     .btn {
@@ -564,6 +584,10 @@
       position: relative;
       width: 100vw;
       height: 40vh;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
       background: url('img/fullbg.jpg');
       background-position: bottom right;
       background-repeat: no-repeat;
@@ -572,8 +596,8 @@
       h2 {
         color: #fff;
         text-align: center;
-        font-size: 4.5rem;
-        padding: 4rem;
+        font-size: 2.5rem;
+        padding: 5rem;
 
       }
 
@@ -586,42 +610,28 @@
 
     footer {
       width: 100vw;
-      height: 30rem;
       background: #A63EF5; //fallback
       background: linear-gradient(to right, rgb(250, 143, 152), $dark-pink 30%, #A63EF5);
 
 
       & .container {
-        max-width: 1200px;
-        height: 100%;
         display: grid;
-        grid-template-columns: 60% 1fr;
+        grid-template-columns: 1fr;
         margin: 0 auto;
-        overflow: hidden;
 
 
-        & .credits {
-          padding: 0.5em 2em;
-          display: grid;
-          grid-template-rows: 1fr 2rem;
-
-
-          & h2 {
-            color: #591b88;
-            align-self: center;
-            justify-self: center;
-            font-size: 3em;
-            font-weight: bold;
-            line-height: 2em;
-          }
-
-          & small {
-            align-self: end;
-          }
+        h2 {
+          color: #591b88;
+          align-self: center;
+          justify-self: center;
+          font-size: 3em;
+          font-weight: bold;
+          line-height: 2em;
         }
 
         .contact-form {
           padding: 2em;
+          max-width: 35rem;
 
           & div {
             display: grid;
@@ -633,11 +643,10 @@
             &:nth-child(3) label {
               margin-bottom: 0.8rem;
             }
-
           }
 
           input {
-            padding: 0.3em 0.5em;
+            padding: 0.3rem 0.5rem;
             background: none;
             border: none;
             border-bottom: 3px solid #591b88;
@@ -648,23 +657,40 @@
             @extend input;
             border: 3px solid #591b88;
             resize: none;
-            height: 8rem;
+            height: 7rem;
 
           }
+
+          & button {
+            width: 40%;
+            padding: 0.5em 1em;
+            background: none;
+            border: 3px solid #fff;
+            color: #fff;
+            transition: all .3s ease-in-out;
+
+            &:hover {
+              color: #591b88;
+              background: #fff;
+            }
+          }
+        }
+
+        @media screen and (min-width: $medium) {
+          max-width: 1200px;
+          grid-template-columns: 60% 1fr;
         }
       }
 
-      & button {
-        width: 40%;
-        padding: 0.5em 1em;
-        background: none;
-        border: 1px solid #fff;
-        color: #fff;
-        transition: all .3s ease-in-out;
+      .credits {
+        padding: 1em;
+        align-self: end;
 
-        &:hover {
+        & a {
           color: #591b88;
-          background: #fff;
+          text-decoration: none;
         }
+
+
       }
     }
