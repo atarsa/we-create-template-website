@@ -559,32 +559,86 @@
     footer {
       box-sizing: border-box;
       width: 100vw;
-      height: 30vh;
+      height: 47vh;
       background: #A63EF5; //fallback
       background: linear-gradient(to right, rgb(250, 143, 152), $dark-pink 30%, #A63EF5);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
 
-      & .credits {
+
+      & .container {
         box-sizing: border-box;
-        padding: 0.5em 2em;
+        max-width: 1224px;
         height: 100%;
         display: grid;
+        grid-template-columns: 60% 1fr;
+        margin: 0 auto;
+        overflow: hidden;
 
-        & h2 {
-          color: #441b63;
-          align-self: center;
-          justify-self: center;
-          font-size: 2em;
-          font-weight: bold;
-          line-height: 2em;
+
+        & .credits {
+          padding: 0.5em 2em;
+          display: grid;
+
+          & h2 {
+            color: #591b88;
+            align-self: center;
+            justify-self: center;
+            font-size: 3em;
+            font-weight: bold;
+            line-height: 2em;
+          }
+
+          & small {
+            align-self: end;
+          }
         }
 
-        & small {
-          align-self: end;
+        .contact-form {
+          padding: 2em;
+
+          & div {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 0.6rem;
+            padding: 0.5em 0;
+            color: #591b88;
+
+            &:nth-child(3) label {
+              margin-bottom: 0.8rem;
+            }
+
+          }
+
+          input {
+            padding: 0.3em 0.5em;
+            background: none;
+            border: none;
+            border-bottom: 3px solid #591b88;
+            color: #591b88;
+          }
+
+          textarea {
+            @extend input;
+            border: 3px solid #591b88;
+            resize: none;
+            height: 8rem;
+
+          }
         }
       }
 
+      & button {
+        width: 40%;
+        padding: 0.5em 1em;
+        background: none;
+        border: 1px solid #fff;
+        color: #fff;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+          color: #591b88;
+          background: #fff;
+        }
+      }
 
 
     }
